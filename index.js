@@ -45,17 +45,6 @@ const getWebsite = async (_) => {
     };
 
     downloadJpgInit();
-    // for (let elem of arr10) {
-    //   async function whatever() {
-    //     const pic = await fetch(elem);
-    //     const text = await pic.text();
-
-    //   }
-    //   whatever();
-    // }
-    // const parent = await dom.window.document.querySelector('section');
-    // const children = await parent.childNodes;
-    // const arr = await [...children];
   } catch (error) {
     console.log(error);
   }
