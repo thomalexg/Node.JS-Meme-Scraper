@@ -28,22 +28,25 @@ const getWebsite = async (_) => {
     }
     let count = 1;
     let picArr = [];
-    async function whatever(url) {
+    async function downloadJpg(url) {
       const pic = await fetch(url);
       const buffer = await pic.buffer();
-      fs.writeFile(`./meme_folder/${count}image.jpg`, buffer, () =>
-        console.log('finished downloading!'),
-      );
+      fs.writeFile(`./meme_folder/${count}image.jpg`, buffer, () => {
+        console.log('finished downloading!');
+        console.log(count);
+      });
       count++;
 
       // const text = await pic.text();
       // console.log(text);
     }
+    const downloadJpgInit = () => {
+      for (let url of arr10) {
+        downloadJpg(url);
+      }
+    };
 
-    for (let url of arr10) {
-      whatever(url);
-    }
-
+    downloadJpgInit();
     // for (let elem of arr10) {
     //   async function whatever() {
     //     const pic = await fetch(elem);
