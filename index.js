@@ -16,7 +16,7 @@ const getWebsite = async (_) => {
     for (let elem of imgNodeList.values()) {
       imgArr.push(elem.src);
     }
-    let arr10 = await imgArr.slice(0, 9);
+    let arr10 = await imgArr.slice(0, 10);
     // fs.mkdir('Pictures', { recursive: true }, (err) => {
     //   if (err) throw err;
     try {
@@ -26,18 +26,22 @@ const getWebsite = async (_) => {
     } catch (err) {
       console.error(err);
     }
-
+    let count = 1;
     let picArr = [];
-    async function whatever(elem) {
-      const pic = await fetch(elem);
+    async function whatever(url) {
+      const pic = await fetch(url);
       const buffer = await pic.buffer();
-      console.log(buffer);
+      fs.writeFile(`./meme_folder/${count}image.jpg`, buffer, () =>
+        console.log('finished downloading!'),
+      );
+      count++;
+
       // const text = await pic.text();
       // console.log(text);
     }
 
-    for (let elem of arr10) {
-      whatever(elem);
+    for (let url of arr10) {
+      whatever(url);
     }
 
     // for (let elem of arr10) {
