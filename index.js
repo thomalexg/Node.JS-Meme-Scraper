@@ -31,10 +31,8 @@ const getWebsite = async (_) => {
     async function downloadJpg(url) {
       const pic = await fetch(url);
       const buffer = await pic.buffer();
-      fs.writeFile(`./meme_folder/${count}image.jpg`, buffer, () => {
-        console.log('finished downloading!');
-        console.log(count);
-      });
+      await fs.promises.writeFile(`./meme_folder/${count}image.jpg`, buffer);
+      console.log(`Pictures downloaded: ${count}`);
       count++;
 
       // const text = await pic.text();
@@ -62,4 +60,5 @@ const getWebsite = async (_) => {
     console.log(error);
   }
 };
+
 getWebsite();
