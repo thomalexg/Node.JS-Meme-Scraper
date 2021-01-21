@@ -30,8 +30,10 @@ const getWebsite = async (_) => {
     let picArr = [];
     async function whatever(elem) {
       const pic = await fetch(elem);
-      const text = await pic.text();
-      console.log(text);
+      const buffer = await pic.buffer();
+      console.log(buffer);
+      // const text = await pic.text();
+      // console.log(text);
     }
 
     for (let elem of arr10) {
