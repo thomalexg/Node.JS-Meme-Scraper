@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-const getWebsite = async (_) => {
+const getWebsite = async () => {
   try {
     const data = await fetch(
       'https://memegen-link-examples-upleveled.netlify.app/',
@@ -16,7 +16,7 @@ const getWebsite = async (_) => {
     for (let elem of imgNodeList.values()) {
       imgArr.push(elem.src);
     }
-    let arr10 = await imgArr.slice(0, 10);
+    let arr10 = imgArr.slice(0, 10);
     // fs.mkdir('Pictures', { recursive: true }, (err) => {
     //   if (err) throw err;
     try {
@@ -27,7 +27,6 @@ const getWebsite = async (_) => {
       console.error(err);
     }
     let count = 1;
-    let picArr = [];
     async function downloadJpg(url) {
       const pic = await fetch(url);
       const buffer = await pic.buffer();
@@ -39,7 +38,7 @@ const getWebsite = async (_) => {
       // console.log(text);
     }
     const downloadJpgInit = () => {
-      for (let url of arr10) {
+      for (const url of arr10) {
         downloadJpg(url);
       }
     };
