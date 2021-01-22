@@ -27,7 +27,7 @@ const getWebsite = async () => {
       console.error(err);
     }
     let count = 1;
-    async function downloadJpg(url) {
+    const downloadJpg = async (url) => {
       const pic = await fetch(url);
       const buffer = await pic.buffer();
       await fs.promises.writeFile(`./meme_folder/${count}image.jpg`, buffer);
@@ -36,10 +36,10 @@ const getWebsite = async () => {
 
       // const text = await pic.text();
       // console.log(text);
-    }
-    const downloadJpgInit = () => {
+    };
+    const downloadJpgInit = async () => {
       for (const url of arr10) {
-        downloadJpg(url);
+        await downloadJpg(url);
       }
     };
 
