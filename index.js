@@ -8,8 +8,8 @@ const getWebsite = async () => {
     const data = await fetch(
       'https://memegen-link-examples-upleveled.netlify.app/',
     );
-    const parser = await data.text();
-    const dom = await new JSDOM(parser);
+    const text = await data.text();
+    const dom = await new JSDOM(text);
     const window = await dom.window.document;
     const imgNodeList = await window.querySelectorAll('img');
     const imgArr = [];
