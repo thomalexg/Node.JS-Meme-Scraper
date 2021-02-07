@@ -12,13 +12,12 @@ const getWebsite = async () => {
     const dom = await new JSDOM(parser);
     const window = await dom.window.document;
     const imgNodeList = await window.querySelectorAll('img');
-    let imgArr = [];
-    for (let elem of imgNodeList.values()) {
+    const imgArr = [];
+    for (const elem of imgNodeList.values()) {
       imgArr.push(elem.src);
     }
-    let arr10 = imgArr.slice(0, 10);
-    // fs.mkdir('Pictures', { recursive: true }, (err) => {
-    //   if (err) throw err;
+    const arr10 = imgArr.slice(0, 10);
+
     try {
       if (!fs.existsSync('./meme_folder')) {
         fs.mkdirSync('./meme_folder');
@@ -33,9 +32,6 @@ const getWebsite = async () => {
       await fs.promises.writeFile(`./meme_folder/${count}image.jpg`, buffer);
       console.log(`Pictures downloaded: ${count}`);
       count++;
-
-      // const text = await pic.text();
-      // console.log(text);
     };
     const downloadJpgInit = async () => {
       for (const url of arr10) {
