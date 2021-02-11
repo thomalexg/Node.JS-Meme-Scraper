@@ -1,6 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const { JSDOM } = jsdom;
 
 const getWebsite = async () => {
